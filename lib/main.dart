@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -10,19 +10,60 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('live Exam'),
-          backgroundColor: Colors.blue,
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Text Styling App'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'Flutter Text Styling',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40,
+              ),
+            ),
+            SizedBox(
+              height: 12.0,
+            ),
+            Text(
+              'Experiment with text styles',
+              style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+              height: 1,
+            ),
+            TextButton(
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                      content: Text(
+                    'You clicked the button!',
+                  )),
+                );
+              },
+              child: const Text(
+                'Click Me',
+                style: TextStyle(color: Colors.blue, fontSize: 16),
+              ),
+            ),
+          ],
         ),
-        body: Center(
-            child: Text(
-          'hello bangladsh',
-          style: TextStyle(
-            fontSize: 50,
-            color: Colors.red,
-          ),
-        )),
       ),
     );
   }
