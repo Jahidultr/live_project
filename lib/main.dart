@@ -62,6 +62,25 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(color: Colors.blue, fontSize: 16),
               ),
             ),
+            SizedBox(
+              height: 12.0,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Welcome to'),
+                SizedBox(width: 5),
+                Text(
+                  'Flutter!',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                    fontStyle: FontStyle.normal,
+                    color: Colors.blue,
+                  ),
+                )
+              ],
+            )
           ],
         ),
       ),
