@@ -1,7 +1,13 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true,
+      builder: (context) => MyApp(), // Wrap your app
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,80 +16,38 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      useInheritedMediaQuery: true,
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      home: Home(),
     );
   }
 }
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Text Styling App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Flutter Text Styling',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 40,
-              ),
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Text(
-              'Experiment with text styles',
-              style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            SizedBox(
-              height: 1,
-            ),
-            TextButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                      content: Text(
-                    'You clicked the button!',
-                  )),
-                );
-              },
-              child: const Text(
-                'Click Me',
-                style: TextStyle(color: Colors.blue, fontSize: 16),
-              ),
-            ),
-            SizedBox(
-              height: 12.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          title: Text('Home'),
+        ),
+        body: Column(
+          children: [
+            Wrap(
+              alignment: WrapAlignment.start,
+              spacing: 10,
               children: [
-                Text('Welcome to'),
-                SizedBox(width: 5),
-                Text(
-                  'Flutter!',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.normal,
-                    color: Colors.blue,
-                  ),
-                )
+                Text('bajsjdjdj jhsdfkjg kjsfg lkdfg lkjdg jfv ksdfkgs ;ldfg '),
+                Text('bajsjdj jjjh  dj'),
+                Text('bajsjdj jjdiof ikfiof ksjdfpog sdofgpsof jdsfpg j dj')
               ],
             )
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
